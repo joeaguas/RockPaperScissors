@@ -1,0 +1,38 @@
+
+import random
+
+def rsp_shoot(comp, player):
+    result = False
+    if comp == 'rock' and player == 'paper':
+        result = True
+    elif comp == 'paper' and player == 'scissor':
+        result = True
+    elif comp == 'scissor' and player == 'rock':
+        result = True
+    return result
+
+def game_play():
+    rsp = ['rock', 'paper', 'scissors']
+
+    while(True):
+        print('Rock... Paper... Scissors... ')
+        shoot = random.choice(rsp)
+        shot = input('Shoot!\n')
+        if shot.lower() not in rsp:
+            print('Input not valid')
+        else:
+            if shoot == shot.lower():
+                print(f'I also played {shoot}. We tied!')
+            elif rsp_shoot(shoot, shot.lower()):
+                print(f'I play {shoot}. You win! Good game!')
+            else:
+                print(f'I play {shoot}. You lost! Sucks to suck!')
+            new_game = input('Play another match? (yes/no)\n')
+            if new_game.lower() == 'yes':
+                print('Great, lets go!')
+                continue
+            else:
+                print('Maybe next time...')
+                break
+
+game_play()
